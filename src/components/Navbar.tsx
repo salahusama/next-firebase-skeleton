@@ -2,7 +2,7 @@ import { useUserContext } from "@/lib/context/user"
 import Link from "next/link"
 
 export default function Navbar() {
-  const { user, username, isLoading } = useUserContext()
+  const { user, userData, isLoading } = useUserContext()
 
   return (
     <nav className="navbar">
@@ -13,7 +13,7 @@ export default function Navbar() {
           </Link>
         </li>
 
-        {!isLoading && user && username && (
+        {!isLoading && user && userData?.username && (
           <>
           <li className="push-left">
             <Link href="/admin">
@@ -21,14 +21,14 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href={`/${username}`}>
+            <Link href={`/${userData.username}`}>
               <img src={user.photoURL ?? undefined} />
             </Link>
           </li>
           </>
         )}
         
-        {!isLoading && !username && (
+        {!isLoading && !userData && (
           <li>
             <Link href="/enter">
               <button className="btn-blue">Log In</button>
