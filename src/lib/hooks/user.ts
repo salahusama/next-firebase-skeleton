@@ -2,11 +2,11 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { useEffect, useState } from 'react'
 import { auth, firestore } from '@/lib/firebase'
 import { doc, getDoc } from 'firebase/firestore'
-import { UserContextType } from '../context/user'
+import { UserContextType, UserData } from '../context/user'
 
 export function useUserAuth(): UserContextType {
   const [user] = useAuthState(auth)
-  const [username, setUsername] = useState(null)
+  const [userData, setUserData] = useState<UserData>(null)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -15,11 +15,11 @@ export function useUserAuth(): UserContextType {
 
       if (user) {
         getDoc(doc(firestore, 'users', user.uid)).then(snap => {
-          setUsername(snap.data()?.username)
+          setUserData(snap.data() as UserData)
           setIsLoading(false)
         })
       } else {
-        setUsername(null)
+        setUserData(null)
         setIsLoading(false)
       }
     })
@@ -27,5 +27,5 @@ export function useUserAuth(): UserContextType {
     return unsubscribe
   }, [user])
 
-  return { user, username, isLoading }
+  return { user, userData, isLoading }
 }

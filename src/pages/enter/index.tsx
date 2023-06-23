@@ -5,13 +5,13 @@ import UsernameForm from "./UsernameForm"
 import Loader from "@/components/Loader"
 
 export default function EnterPage() {
-  const { user, username, isLoading } = useUserContext()
+  const { user, userData, isLoading } = useUserContext()
 
   return (
     <main>
       <Loader show={isLoading} />
       {!isLoading && (user
-        ? !username ? <UsernameForm /> : <SignOutButton />
+        ? !userData ? <UsernameForm /> : <SignOutButton />
         : <SignInButton />
       )}
     </main>

@@ -1,7 +1,7 @@
 import { useUserContext } from '@/lib/context/user'
 import { firestore } from '@/lib/firebase'
 import { doc, getDoc, writeBatch } from 'firebase/firestore'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export default function UsernameForm() {
   const { user, isLoading } = useUserContext()

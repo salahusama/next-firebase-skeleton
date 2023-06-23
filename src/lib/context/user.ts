@@ -1,15 +1,19 @@
 import type { User } from 'firebase/auth'
 import { createContext, useContext } from 'react'
 
+export type UserData = {
+  username?: string | null,
+} | null
+
 export type UserContextType = {
   user: User | null | undefined,
-  username: string | null,
+  userData: UserData | null,
   isLoading: boolean
 }
 
 const defaultUserContext: UserContextType = {
   user: null,
-  username: null,
+  userData: null,
   isLoading: true,
 }
 
