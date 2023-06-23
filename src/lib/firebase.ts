@@ -23,8 +23,9 @@ if (!getApps().length) {
 //////////////////////////////////
 export const auth = getAuth()
 export const googleAuthProvider = new GoogleAuthProvider()
-export const signInWithGoogle = async () => {
+export const signInWithGoogle = async (callback?: Function) => {
   await signInWithPopup(auth, googleAuthProvider)
+  callback && callback()
 }
 
 export const firestore = getFirestore()
