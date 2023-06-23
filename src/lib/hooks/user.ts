@@ -2,9 +2,9 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { useEffect, useState } from 'react'
 import { auth, firestore } from '@/lib/firebase'
 import { doc, getDoc } from 'firebase/firestore'
-import { UserData } from '../context/user'
+import { UserContextType } from '../context/user'
 
-export function useUserData(): UserData {
+export function useUserAuth(): UserContextType {
   const [user] = useAuthState(auth)
   const [username, setUsername] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
