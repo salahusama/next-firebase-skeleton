@@ -1,6 +1,8 @@
 import type { User } from 'firebase/auth'
 import { createContext, useContext } from 'react'
 
+// Define UserData here.
+// This is the only place this needs to be defined for it to be used everywhere.
 export type UserData = {
   username: string | null,
 } | null

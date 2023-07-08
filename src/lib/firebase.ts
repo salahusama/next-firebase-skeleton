@@ -4,13 +4,13 @@ import { getFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAA9Z58AsPMJNTUDnDlQQ-G325aI0TnUtg",
-  authDomain: "fireship-nextjs-1f4fe.firebaseapp.com",
-  projectId: "fireship-nextjs-1f4fe",
-  storageBucket: "fireship-nextjs-1f4fe.appspot.com",
-  messagingSenderId: "658231251847",
-  appId: "1:658231251847:web:dcbc993c741306faebb922",
-  measurementId: "G-K8WC48CYJX"
+  apiKey:            process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain:        process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId:         process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket:     process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId:             process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId:     process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 }
 
 // Initialize the app only once
@@ -19,7 +19,7 @@ if (!getApps().length) {
 }
 
 //////////////////////////////////
-// Firebase Auth
+// Firebase Auth /////////////////
 //////////////////////////////////
 export const auth = getAuth()
 export const googleAuthProvider = new GoogleAuthProvider()

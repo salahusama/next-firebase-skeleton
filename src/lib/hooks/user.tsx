@@ -1,10 +1,10 @@
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { useEffect, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import { auth, firestore } from '@/lib/firebase'
 import { doc, getDoc } from 'firebase/firestore'
-import { UserContextType, UserData } from '../context/user'
+import { UserContext, UserContextType, UserData } from '../context/user'
 
-export function useUserAuth(): UserContextType {
+function useUserAuth(): UserContextType {
   const [user] = useAuthState(auth)
   const [userData, setUserData] = useState<UserData>(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -28,4 +28,13 @@ export function useUserAuth(): UserContextType {
   }, [user])
 
   return { user, userData, isLoading }
+}
+
+export function UserAuthProvider({ children }: { children: ReactNode }) {
+  const userAuth = useUserAuth()
+  return (
+    <UserContext.Provider value={userAuth}>
+      {children}
+    </UserContext.Provider>
+  )
 }

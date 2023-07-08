@@ -1,4 +1,5 @@
 import { useUserContext } from "@/lib/context/user"
+import { Routes } from "@/lib/routes"
 import Link from "next/link"
 
 export default function Navbar() {
@@ -21,7 +22,7 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href={`/${userData.username}`}>
+            <Link href={Routes.USER_PROFILE(userData.username)}>
               <img src={user.photoURL ?? undefined} />
             </Link>
           </li>
