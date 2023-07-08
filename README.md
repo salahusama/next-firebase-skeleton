@@ -1,8 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# next-firebase-skeleton
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and with firebase auth and a few routes setup.
 
 ## Getting Started
 
-First, run the development server:
+You'll need to add an `.env.local` file to the root directory and add these keys:
+
+```
+NEXT_PUBLIC_FIREBASE_API_KEY=""
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=""
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=""
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=""
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=""
+NEXT_PUBLIC_FIREBASE_APP_ID=""
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=""
+```
+
+Run the development server:
 
 ```bash
 npm run dev
